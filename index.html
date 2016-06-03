@@ -6,7 +6,7 @@
   <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
-  <div class="fullwidthheight whiteonblack">
+  <div id="charades" class="fullwidthheight whitetext">
     <div class="centerhorivert">
       <p class="bold center">Select a category.</p>
       <button class="bold" onclick="cat1()">NDP Songs</button>
@@ -14,8 +14,22 @@
       <button class="bold" onclick="cat3()">Singapore Food</button>
       <button class="bold" onclick="cat4()">Kopitiam</button>
       <button class="bold" onclick="cat5()">Singapore Sights</button>
-      <button class="italic" onclick="location.href='custom.html'">Custom List</button>
-      <p class="autowidth center"><a href="" id="item" class="blue bold"></a></p>
+      <button class="italic" onclick="revealCustom()">Custom List</button>
+      <p class="autowidth center"><a href="" id="charadesItem" class="blue bold"></a></p>
+    </div>
+  </div>
+
+  <div id="custom" class="zeroheight whitetext">
+    <div class="centerhorivert">
+      <p class="bold center">Paste your list below.</p>
+      <div class="center">
+        <textarea id="textarea" oninput="resize()">Scissors
+Paper
+Stone</textarea><br><br>
+        <button class="bold" onclick="catCustom()">Pick Random</button>
+        <button class="italic" onclick="revealCharades()">NDP Charades</button>
+      </div>
+      <p class="autowidth center"><a href="" id="customItem" class="blue bold"></a></p>
     </div>
   </div>
 </body>

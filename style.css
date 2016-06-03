@@ -1,3 +1,19 @@
+body {
+  background-color: black;
+}
+textarea {
+  text-align: left;
+
+  height: auto;
+  min-height: 50px;
+  overflow-y: hidden;
+
+  white-space: pre; /* no wrapping */
+  width: auto;
+  min-width: 161px;
+  max-width: inherit;
+  overflow-x: hidden;
+}
 .autowidth {
   width: auto;
 }
@@ -23,7 +39,9 @@
 .italic {
   font-style: italic;
 }
-.whiteonblack {
+.whitetext {
   color: white;
-  background-color: black;
+}
+.zeroheight {
+  visibility: hidden;
 }

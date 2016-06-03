@@ -43,6 +43,12 @@ var singaporeSights = ['Mustafa Centre',
                        'Marina Bay Floating Stadium',
                        'Coney Island']
 var myArray = [];
+var activeView = "charades";
+
+function auto_grow(element) {
+    element.style.height = "5px";
+    element.style.height = (element.scrollHeight)+"px";
+}
 function cat1() {
   myArray = ndpSongs;
   generate();
@@ -63,14 +69,49 @@ function cat5() {
   myArray = singaporeSights;
   generate();
 }
+function catCustom() {
+  var text = document.getElementById('textarea').value;
+  myArray = text.split('\n');
+  generate();
+}
 function generate() {
   var random = myArray[Math.floor(Math.random() * myArray.length)];
-  var item = document.getElementById("item");
-  item.innerHTML = random;
-
-  var ndp = '';
-  if (myArray == ndpSongs) {
-    ndp = "NDP ";
+  var item = document.getElementById(activeView+"Item");
+  if (item.innerHTML == random) {
+    generate()
+  } else {
+    item.innerHTML = random;
+    if (myArray == ndpSongs) {
+      random = "NDP "+random;
+    }
+    item.href="http://images.google.com/search?q="+random+"&tbm=isch";
   }
-  item.href="http://images.google.com/search?q="+ndp+random+"&tbm=isch";
+}
+function resize() {
+  var textarea = document.getElementById("textarea");
+  var buffer = 5;
+  textarea.style.height = 0;
+  textarea.style.height = textarea.scrollHeight + buffer;
+  textarea.style.width = 0;
+  textarea.style.width = textarea.scrollWidth + buffer;
+}
+function revealCharades() {
+  var custom = document.getElementById("custom");
+  custom.classList.remove("fullwidthheight");
+  custom.classList.add("zeroheight");
+
+  var charades = document.getElementById("charades");
+  charades.classList.remove("zeroheight");
+  charades.classList.add("fullwidthheight");
+  activeView = "charades"
+}
+function revealCustom() {
+  var charades = document.getElementById("charades");
+  charades.classList.remove("fullwidthheight");
+  charades.classList.add("zeroheight");
+
+  var custom = document.getElementById("custom");
+  custom.classList.remove("zeroheight");
+  custom.classList.add("fullwidthheight");
+  activeView = "custom"
 }
